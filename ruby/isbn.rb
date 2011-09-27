@@ -1,5 +1,5 @@
 def valid_isbn13?(isbn)
-  nums = isbn.delete('-').gsub(/[xX]{1}$/,'').scan(/./).map(&:to_i)
+  nums = isbn.delete('-').each_char.map(&:to_i)
   check = nums.pop
   sum = nums.each_slice(2).inject(0) { |s, (n,m)| s + n + m * 3 }  
   10 - sum % 10 == check
