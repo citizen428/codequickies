@@ -15,8 +15,6 @@ def find_sequence(goal)
    elsif (start < goal)
      find.call(start+5, "(#{history} + 5)") ||
      find.call(start*3, "(#{history} * 3)")
-   else
-     nil
    end
  end
  find.call(1, "1")
