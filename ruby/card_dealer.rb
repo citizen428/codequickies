@@ -7,24 +7,24 @@ class CardGame
     self.decks = decks
   end
 
-  def shuffle
-    self.playing_deck = (DECK*self.decks).shuffle
-  end
-
   def deal(players=1, cards=5)
     shuffle
     self.dealt = Array.new(players) { Array.new }
 
-    self.dealt.map { |hand| cards.times { hand << self.playing_deck.pop } }
+    dealt.map { |hand| cards.times { hand << playing_deck.pop } }
   end
 
   def display
-    self.dealt.each_with_index { |cards, i| puts "Player #{i+1}: #{cards.join(' | ')}" }
-    puts "Cards used: #{self.dealt.flatten.size}"
-    puts "Cards remaining: #{self.playing_deck.size}"
+    dealt.each_with_index { |cards, i| puts "Player #{i+1}: #{cards.join(' | ')}" }
+    puts "Cards used: #{dealt.flatten.size}"
+    puts "Cards remaining: #{playing_deck.size}"
   end
 
-  private :shuffle
+  def shuffle
+    @playing_deck = (DECK*decks).shuffle
+  end
+
+  private :shuffle, :decks=, :playing_deck=, :dealt=
 end
 
 game1 = CardGame.new
