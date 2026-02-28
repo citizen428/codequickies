@@ -1,0 +1,4 @@
+If:
+  PathMatch: abuse\.c   # Match the specific file (regex)
+Diagnostics:
+  Suppress: ["*"]      # Disable all diagnostics/warnings
